@@ -31,7 +31,7 @@ var actions = {
             // write data to request body
         
             console.log(body);
-            req.write(body.toString());
+            req.write(String(body));
             req.end();
         
           }
