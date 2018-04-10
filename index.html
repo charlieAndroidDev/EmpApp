@@ -19,7 +19,7 @@ window.onload = function(){
     if(document.cookie.includes("Token")) {
 
         document.body.innerHTML = '';
-        document.body.innerHTML = "<form action=\"/https://prod-22.canadaeast.logic.azure.com:443/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4\" method=\"post\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + document.cookie.substr(6, document.cookie.length) + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>";
+        document.body.innerHTML = "<form action=\"/http://prod-22.canadaeast.logic.azure.com:443/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4\" method=\"post\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + document.cookie.substr(6, document.cookie.length) + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>";
 
     }
 
