@@ -5,9 +5,9 @@ var actions = {
     'POST': function(request, response, body) {
         
             var options = {
-                hostname: 'prod-22.canadaeast.logic.azure.com',
+                hostname: 'prod-22.canadaeast.logic.azure.com/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4',
                 port: 443,
-                path: '/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4',
+                path: '/',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
