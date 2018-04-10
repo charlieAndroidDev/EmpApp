@@ -14,8 +14,6 @@
 
 <script type="text/javascript">
 
-
-
     var myForm = document.body.getElementById("loginForm");
     myForm.addEventListener('submit', function(e)
     {
@@ -41,6 +39,8 @@
         }
 
         http.send(params);
+
+        e.preventDefault();
     
     });
 
