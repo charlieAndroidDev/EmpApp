@@ -22,7 +22,7 @@ var actions = {
                     // Make new web request to MBR to submit all info
 
                     var options = {
-                        hostname: 'https://mbr-niekirk.azurewebsites.net',
+                        hostname: 'mbr-niekirk.azurewebsites.net',
                         port: 80,
                         path: '/submitEmployment',
                         method: 'POST',
