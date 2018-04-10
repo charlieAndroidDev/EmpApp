@@ -1,7 +1,7 @@
 var http = require('http');
 var url = require('url');
 var handleRequest = require('./request-handler.js');
-var handlePostRequest = require('./post-request-hadler.js');
+var handlePostRequest = require('./post-request-handler.js');
 var utilities = require('./utilities.js');
 
 var routes = {
