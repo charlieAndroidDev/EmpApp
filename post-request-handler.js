@@ -40,7 +40,7 @@ var actions = {
 
 
                         response.writeHead(200, {"Content-Type": "text/html"});
-                        response.end();
+                        response.end("<font color='green'>Employment details submitted to MBR successfully!</font>");
                     });
 
                     mbrReq.on('error', function(e) {
