@@ -18,11 +18,14 @@ var actions = {
                 console.log('Status: ' + res.statusCode);
                 console.log('Headers: ' + JSON.stringify(res.headers));
                 res.setEncoding('utf8');
-                res.on('data', function (innerBody) {
+                res.on('data', function (data) {
                     
                     response.writeHead(200, {"Content-Type": "text/html"});
-                    response.end(innerBody);
+                    response.end(data);
 
+                });
+                res.on('end', function() {
+                    console.log("end");
                 });
               });
             req.on('error', function(e) {
@@ -31,8 +34,7 @@ var actions = {
             // write data to request body
         
             console.log(body);
-            req.write(String(body));
-            req.end();
+            req.end(String(body));
         
           }
 };
