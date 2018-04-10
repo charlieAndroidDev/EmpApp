@@ -23,7 +23,7 @@ var actions = {
 
                     var options = {
                         hostname: 'https://mbr-niekirk.azurewebsites.net',
-                        port: 443,
+                        port: 80,
                         path: '/submitEmployment',
                         method: 'POST',
                         headers: {
