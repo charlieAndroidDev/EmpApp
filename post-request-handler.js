@@ -5,9 +5,9 @@ var actions = {
     'POST': function(request, response, body) {
         
             var options = {
-                hostname: '176.126.244.22',
+                hostname: 'prod-22.canadaeast.logic.azure.com',
                 port: 80,
-                path: '/CloudProj/getEmpInfo.php',
+                path: '/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -19,37 +19,9 @@ var actions = {
                 console.log('Headers: ' + JSON.stringify(res.headers));
                 res.setEncoding('utf8');
                 res.on('data', function (innerBody) {
-                    // Make new web request to MBR to submit all info
-
-                    var options = {
-                        hostname: 'mbr-niekirk.azurewebsites.net',
-                        port: 80,
-                        path: '/submitEmployment',
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        }
-                      };
                     
-                    var mbrReq = http.request(options, function(mbrRes) {
-                        console.log('Status: ' + mbrRes.statusCode);
-                        console.log('Headers: ' + JSON.stringify(mbrRes.headers));
-                        mbrRes.setEncoding('utf8');
-                        mbrRes.on('data', function (body) {
-                        });
-
-
-                        response.writeHead(200, {"Content-Type": "text/html"});
-                        response.end("<font color='green'>Employment details submitted to MBR successfully!</font>");
-                    });
-
-                    mbrReq.on('error', function(e) {
-                        console.log('problem with request: ' + e.message);
-                    });
-                      // write data to request body
-                  
-                    console.log(innerBody);
-                    mbrReq.end(innerBody);
+                    response.writeHead(200, {"Content-Type": "text/html"});
+                    response.end(innerBody);
 
                 });
               });

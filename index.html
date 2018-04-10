@@ -48,7 +48,7 @@ window.onload = function(){
                 document.cookie = "Token=" + token;
 
                 document.body.innerHTML = '';
-                document.body.innerHTML = http.responseText;
+                document.body.innerHTML = "<form action=\"/submitEmpDetails\" method=\"post\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + token + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>";
 
             }
         }
