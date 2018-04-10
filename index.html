@@ -19,9 +19,35 @@ window.onload = function(){
     if(document.cookie.includes("Token")) {
 
         document.body.innerHTML = '';
-        document.body.innerHTML = "<form action=\"https://prod-22.canadaeast.logic.azure.com:443/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4\" method=\"post\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + document.cookie.substr(6, document.cookie.length) + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>";
+        document.body.innerHTML = "<form id=\"submitDetailsForm\" onSubmit=\"return submitDetails()\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + document.cookie.substr(6, document.cookie.length) + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>";
 
     }
+
+};
+
+var submitDetails = function() {
+
+    var http = new XMLHttpRequest();
+    var url = "https://prod-22.canadaeast.logic.azure.com:443/workflows/83be6bafd8cb40d1a96e2167fcf342e2/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZAE9stwcP4eqAHuEcF6xrhIugPDUKKTQhDr6qrHRhW4";
+    var token = document.getElementById("submitDetailsForm").elements[0].value;
+
+    var params = "token=" + token;
+
+    http.open("POST", url, true);
+    
+    //Send the proper header information along with the request
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+
+            document.body.innerHTML = '';
+            document.body.innerHTML = http.responseText;
+
+        }
+    }
+
+    http.send(params);
 
 };
 
@@ -48,7 +74,7 @@ window.onload = function(){
                 document.cookie = "Token=" + token;
 
                 document.body.innerHTML = '';
-                document.body.innerHTML = "<form action=\"/submitEmpDetails\" method=\"post\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + token + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>";
+                document.body.innerHTML = "<form id=\"submitDetailsForm\" onSubmit=\"return submitDetails()\"><input type=\"password\" style=\"display:none\"  name=\"token\" value=\"" + token + "\"><input type=\"checkbox\" value=\"confirm\"> I confirm I wish to share details with mortgage company MBR<br><input type=\"submit\" value=\"Submit\"></form>"
 
             }
         }
