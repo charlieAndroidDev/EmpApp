@@ -14,12 +14,16 @@
 
 <script type="text/javascript">
 
-if(document.cookie.includes("Token")) {
+document.onload = function(){
 
-    document.body.innerHTML = '';
-    document.body.innerHTML = document.cookie;
+    if(document.cookie.includes("Token")) {
 
-}
+        document.body.innerHTML = '';
+        document.body.innerHTML = document.cookie;
+
+    }
+
+};
 
     var myForm = document.getElementById("loginForm");
     myForm.addEventListener('submit', function(e)
