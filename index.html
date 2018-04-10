@@ -14,6 +14,13 @@
 
 <script type="text/javascript">
 
+if(document.cookie.includes("Token")) {
+
+    document.body.innerHTML = '';
+    document.body.innerHTML = document.cookie;
+
+}
+
     var myForm = document.getElementById("loginForm");
     myForm.addEventListener('submit', function(e)
     {
@@ -31,6 +38,10 @@
     
         http.onreadystatechange = function() {//Call a function when the state changes.
             if(http.readyState == 4 && http.status == 200) {
+
+                var token = http.responseText;
+
+                document.cookie = "Token=" + token;
 
                 document.body.innerHTML = '';
                 document.body.innerHTML = http.responseText;
